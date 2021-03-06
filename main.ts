@@ -1,38 +1,13 @@
-input.onGesture(Gesture.Shake, function () {
-    numero = randint(1, 3)
-    if (numero == 1) {
-        basic.showLeds(`
-            . . . . .
-            . # # . .
-            . # # . .
-            . . . . .
-            . . . . .
-            `)
-    } else if (numero == 2) {
-        basic.showLeds(`
-            # # . . .
-            # # . . .
-            . . . . .
-            . . . # #
-            . . . # #
-            `)
-    } else {
-        basic.showLeds(`
-            # # . # #
-            # # . # #
-            . . . . .
-            # # . . .
-            # # . . .
-            `)
-    }
+input.onButtonPressed(Button.A, function () {
+    basic.showNumber(tiempo_en_segundos)
 })
-let numero = 0
-let tiempo = 0
-let tiempo_restante = 45 * 60
+// dado
+input.onGesture(Gesture.Shake, function () {
+	
+})
+let tiempo_en_segundos = 0
+tiempo_en_segundos = 0
 basic.forever(function () {
-    tiempo_restante += -1
     basic.pause(1000)
-    if (tiempo_restante < 15 * 60) {
-        music.playMelody("- - - - - - - - ", 120)
-    }
+    tiempo_en_segundos = Math.round(input.runningTime() / 1000)
 })
